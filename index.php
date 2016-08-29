@@ -81,21 +81,21 @@
       
       <div class="example example-buttons">
           <div class="pull-left">
-                    <button type="button" class="btn btn-primary ladda-button" data-style="slide-left" data-plugin="laddaProgress">
+                    <a href="register.php"> <button type="button" class="btn btn-primary ladda-button" data-style="slide-left" data-plugin="laddaProgress">
                       <span class="ladda-label"><i class="icon md-long-arrow-left margin-right-10" aria-hidden="true"></i>Sign Up</span>
-                    <span class="ladda-spinner"></span></button>
+                      <span class="ladda-spinner"></span></button></a>
                   </div>
                   <div class="pull-left">
-                    <button type="button" class="btn btn-success ladda-button" data-style="expand-left" data-plugin="laddaProgress">
-                      <span class="ladda-label"><i class="icon md-arrows margin-right-10" aria-hidden="true"></i>Sign In</span>
-                    <span class="ladda-spinner"></span></button>
+                      <a href="register.php"> <button  type="button" class="btn btn-success ladda-button" data-style="expand-left" data-plugin="laddaProgress">
+                      <span class="ladda-label">Login</span>
+                      <span class="ladda-spinner"></span></button></a>
                   </div>
 
-                  <div class="pull-left">
+                  <a href="contact.php"> <div class="pull-left">
                     <button type="button" class="btn btn-warning ladda-button" data-style="zoom-in" data-plugin="laddaProgress">
                       <span class="ladda-label"><i class="icon md-zoom-in margin-right-10" aria-hidden="true"></i>Contact Us</span>
-                    <span class="ladda-spinner"></span></button>
-                  </div>  
+                      <span class="ladda-spinner"></span></button>
+                  </div></a>
         </div>
       
     </div>
