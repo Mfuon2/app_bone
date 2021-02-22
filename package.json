@@ -1,36 +1,36 @@
 {
-  "name": "toptal-rest-series",
+  "name": "sap_bone",
   "version": "0.0.1",
-  "description": "A guide to REST API using Typescript created for Toptal blog",
+  "description": "A guide to REST API using Typescript",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./dist/app.js",
+    "start": "tsc && nodemon ./dist/app.js",
     "debug": "export DEBUG=* && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/makinhs/toptal-rest-series.git"
+    "url": "git+https://github.com/mfuon2/sap_bone.git"
   },
   "keywords": [
     "REST",
     "API",
     "ExpressJS",
-    "NodeJS",
-    "Toptal"
+    "NodeJS"
   ],
   "author": "Marcos Silva",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/makinhs/toptal-rest-series/issues"
+    "url": "https://github.com/mfuon2/sap_bone/issues"
   },
-  "homepage": "https://github.com/makinhs/toptal-rest-series#readme",
+  "homepage": "https://github.com/mfuon2/sap_bone#readme",
   "dependencies": {
     "argon2": "^0.27.0",
     "cors": "^2.8.5",
     "debug": "^4.2.0",
     "express": "^4.17.1",
     "express-winston": "^4.0.5",
+    "nodemon": "^2.0.7",
     "shortid": "^2.2.16",
     "winston": "^3.3.3"
   },
