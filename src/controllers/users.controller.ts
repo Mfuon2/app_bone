@@ -3,7 +3,7 @@ import usersService from '../services/users.service';
 import argon2 from 'argon2';
 import debug from 'debug';
 
-const log: debug.IDebugger = debug('app:users-controller');
+const log: debug.IDebugger = debug('app:src-controller');
 class UsersController {
     private static instance: UsersController;
 

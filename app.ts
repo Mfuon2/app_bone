@@ -5,7 +5,7 @@ import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import cors from 'cors'
 import {CommonRoutesConfig} from './common/common.routes.config';
-import {UsersRoutes} from './users/users.routes.config';
+import {UsersRoutes} from './src/users.routes.config';
 import debug from 'debug';
 
 const app: express.Application = express();
@@ -42,6 +42,10 @@ app.use(expressWinston.errorLogger({
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.status(200).send(`Server running at http://localhost:${port}`)
+});
+
+app.post('/callback', (req: express.Request, res: express.Response) => {
+    res.status(201).send(`===> post method :${port}`)
 });
 server.listen(port, () => {
     debugLog(`Server running at http://localhost:${port}`);
