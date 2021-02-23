@@ -7,12 +7,15 @@ import cors from 'cors'
 import {CommonRoutesConfig} from './common/common.routes.config';
 import {UsersRoutes} from './src/users.routes.config';
 import debug from 'debug';
+import twilio from 'twilio';
+import {twilioInstance} from "./src/config";
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
 const port: Number = 3000;
 const routes: Array<CommonRoutesConfig> = [];
 const debugLog: debug.IDebugger = debug('app');
+const twiml = twilioInstance;
 
 app.use(bodyparser.json());
 app.use(cors());
@@ -27,6 +30,8 @@ app.use(expressWinston.logger({
     )
 }));
 
+app.use(bodyparser.urlencoded({extended: false}))
+app.use(bodyparser.json())
 routes.push(new UsersRoutes(app));
 
 app.use(expressWinston.errorLogger({
@@ -47,6 +52,7 @@ app.get('/', (req: express.Request, res: express.Response) => {
 app.post('/callback', (req: express.Request, res: express.Response) => {
     res.status(201).send(`===> post method :${port}`)
 });
+
 server.listen(port, () => {
     debugLog(`Server running at http://localhost:${port}`);
     routes.forEach((route: CommonRoutesConfig) => {
