@@ -9,10 +9,15 @@ import {UsersRoutes} from './src/users.routes.config';
 import debug from 'debug';
 import twilio from 'twilio';
 import {twilioInstance} from "./src/config";
+import v1Router from "./src/routes";
+
+const redis = require('redis');
+const session = require('express-session');
+let RedisStore = require('connect-redis')(session);
 
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
-const port: Number = 3000;
+const port: Number = 80;
 const routes: Array<CommonRoutesConfig> = [];
 const debugLog: debug.IDebugger = debug('app');
 const twiml = twilioInstance;
@@ -29,9 +34,25 @@ app.use(expressWinston.logger({
         winston.format.json()
     )
 }));
-
+let redisClient = redis.createClient();
+app.use(
+    session({
+        secret: ['veryimportantsecret','notsoimportantsecret','highlyprobablysecret'],
+        name: "secretname",
+        saveUninitialized:false,
+        cookie: {
+            httpOnly: true,
+            secure: true,
+            sameSite: true,
+            maxAge: 60000 // Time is in miliseconds
+        },
+        store: new RedisStore({ client: redisClient ,ttl: 86400}),
+        resave: false
+    })
+)
 app.use(bodyparser.urlencoded({extended: false}))
 app.use(bodyparser.json())
+app.use(v1Router)
 routes.push(new UsersRoutes(app));
 
 app.use(expressWinston.errorLogger({
