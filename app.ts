@@ -5,11 +5,12 @@ import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import cors from 'cors'
 import {CommonRoutesConfig} from './common/common.routes.config';
-import {UsersRoutes} from './src/users.routes.config';
+import {UsersRoutes} from './src/routes/users.routes.config';
 import debug from 'debug';
 import twilio from 'twilio';
 import {twilioInstance} from "./src/config";
-import v1Router from "./src/routes";
+// import v1Router from "./src/routes";
+import {WhatsAppRoutes} from "./src/routes/whatsapp.routes.config";
 
 const redis = require('redis');
 const session = require('express-session');
@@ -39,7 +40,7 @@ app.use(
     session({
         secret: ['veryimportantsecret','notsoimportantsecret','highlyprobablysecret'],
         name: "secretname",
-        saveUninitialized:false,
+        saveUninitialized:true,
         cookie: {
             httpOnly: true,
             secure: true,
@@ -52,8 +53,9 @@ app.use(
 )
 app.use(bodyparser.urlencoded({extended: false}))
 app.use(bodyparser.json())
-app.use(v1Router)
+//app.use(v1Router)
 routes.push(new UsersRoutes(app));
+routes.push(new WhatsAppRoutes(app));
 
 app.use(expressWinston.errorLogger({
     transports: [

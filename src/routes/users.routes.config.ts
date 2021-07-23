@@ -1,8 +1,8 @@
-import {CommonRoutesConfig} from '../common/common.routes.config';
-import UsersController from './controllers/users.controller';
-import UsersMiddleware from './middleware/users.middleware';
+import {CommonRoutesConfig} from '../../common/common.routes.config';
+import UsersController from '../controllers/users.controller';
+import UsersMiddleware from '../middleware/users.middleware';
 import express from 'express';
-import {googleSearch, ussd} from "./services/whatsapp.service";
+import {googleSearch, ussd} from "../services/whatsapp.service";
 
 export class UsersRoutes extends CommonRoutesConfig {
     constructor(app: express.Application) {
@@ -33,8 +33,6 @@ export class UsersRoutes extends CommonRoutesConfig {
             UsersMiddleware.validatePatchEmail,
             UsersController.patch
         ]);
-
-        this.app.post('/incoming', ussd);
         return this.app;
     }
 }
