@@ -34,7 +34,7 @@
     "express-session": "^1.17.2",
     "express-winston": "^4.1.0",
     "googleapis": "^67.1.0",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.20",
     "redis": "^3.1.2",
     "shortid": "^2.2.16",
     "twilio": "^3.66.1",
